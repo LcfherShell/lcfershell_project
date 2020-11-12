@@ -1,0 +1,326 @@
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard/{{ username }} </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!-- sssss --->
+<link href="{{ url_for('static', filename='bootstrap5/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ url_for('static', filename='bootstrap5/js/jquery.min.js') }}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{{ url_for('static', filename='bootstrap5/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="{{ url_for('static', filename='bootstrap5/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap5/js/memenu.js') }}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="{{ url_for('static', filename='bootstrap5/js/simpleCart.min.js') }}"> </script>
+<!-- slide -->
+<script src="{{ url_for('static', filename='bootstrap5/js/responsiveslides.min.js') }}"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+<style>
+.banner-responsive{
+    width: 400px;
+    height: 93px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+	<div class="header-top">
+		<div class="container">
+		<div class="col-sm-4 world">
+					<ul >
+						<li>
+						<select class="in-drop">
+							  <option>English</option>
+							  <option>Japanese</option>
+							  <option>French</option>
+							</select></li>
+						<li><select class="in-drop1">
+							  <option>Dollar</option>
+							  <option>Euro</option>
+							  <option>Yen</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-4 logo">
+					<a href="/"><img src="{{ url_for('static', filename='bootstrap/images/icons/logos.png') }}" alt=""></a>	
+				</div>
+		
+			<div class="col-sm-4 header-left">
+         <p class="log"><a href="{{ url_for('logout') }}">Logout</a>		
+					<div class="cart box_1">
+						<a href="checkout.html">
+						<h3> <div class="total">
+							<span class="simpleCart_total"></span></div>
+							<img src="{{ url_for('static', filename='bootstrap/images/icons/cart.png') }}" alt=""/></h3>
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+		</div>
+		<div class="container">
+			<div class="head-top">
+				<div class="col-sm-2 number">
+					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+				</div>
+		 <div class="col-sm-8 h_menu4">
+				<ul class="memenu skyblue">
+					  <li class=" grid">
+					  	<a  href="index.html">Home</a>
+					  </li>	
+				    <li class="grid">
+                        <a  href="#">Category</a>
+					  	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">
+									<h4>All Category</h4>
+									<ul>
+										<li><a href="{{ url_for('store', categorys='clothing') }}">Clothing</a></li>
+										<li><a href="{{ url_for('store', categorys='vehicles') }}">Vehicles</a></li>
+										<li><a href="{{ url_for('store', categorys='drinks and food') }}">Drinks & Food</a></li>
+										<li><a href="{{ url_for('store', categorys='daily needs') }}">Daily Needs</a></li>
+										<li><a href="{{ url_for('store', categorys='fashion') }}">Fashion</a></li>
+										<li><a href="{{ url_for('store', categorys='electronic') }}">Electronic</a></li>
+										<li><a href="{{ url_for('store', categorys='tools') }}">Tools</a></li>
+										<li><a href="{{ url_for('store', categorys='healthy') }}">Healthy</a></li>
+										<li><a href="{{ url_for('store', categorys='kitchen') }}">Kitchen</a></li>
+										<li><a href="{{ url_for('store', categorys='others') }}">Others</a></li>
+										
+									</ul>	
+								</div>							
+							</div>
+						  </div>
+						</div>
+			    </li>
+				<li><a  href="{{ url_for('index') }}">Blog</a></li>				
+				<li><a class="color6" href="{{ url_for('contact') }}">Contact</a></li>
+        {% if sellerlist and costumerlist %}
+         <li><a  href="{{ url_for('myseller', page=1) }}">Sales Item</a></li>
+         <li><a  href="{{ url_for('mycostumer', page=1) }}">Purchase Item</a></li>
+        {% elif sellerlist %}
+          <li><a  href="{{ url_for('myseller', page=1) }}">Sales Item</a></li>
+        {% elif costumerlist %}
+          <li><a  href="{{ url_for('mycostumer', page=1) }}">Purchase Item</a></li>
+        {% else %}
+        {% endif %}
+			  </ul> 
+			</div>
+		</div>
+
+        <div class="clearfix"> </div>
+			<!---pop-up-box---->
+					  <script type="text/javascript" src="{{ url_for('static', filename='bootstrap5/js/modernizr.custom.min.js') }}"></script>    
+					<link href="{{ url_for('static', filename='bootstrap5/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all"/>
+					<script src="{{ url_for('static', filename='bootstrap5/js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
+					<!---//pop-up-box---->
+				<div id="small-dialog" class="mfp-hide">>
+				 <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>			
+	<!---->		
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="check-out">
+     {% if level == 'admin' %}
+     <i class="glyphicon glyphicon-search"></i>
+          <input type="text" id="myInput" onkeyup="search()" placeholder="Search Username" title="Type in a name">
+          <br>
+          <table id="tables">
+           <tr>
+             <th colspan="6" >
+                 <small style="text-align: right;">Users: {{ numberuser-1 }}</small> 
+             </th>
+           </tr>
+           <tr>  
+                 <th>No</th>
+                 <th>Name</th>
+                 <th>Email</th>
+                 <th>Auth</th>
+                 <th>Options</th>
+           </tr>
+
+             {% for i in number %}
+           
+            <tr>  
+                {% if not userlist[i].level == 'admin' %}
+                 <td>
+                    {{ i }}
+                </td>
+                 <td>{{ userlist[i].username }}</td>
+                 <td>{{ userlist[i].email }}</td>
+                 <td>{{ userlist[i].auth }}</td>
+                 <td><a href="dashboard/{{ userlist[i].id }}/update">Edit</a>&nbsp;<a href="dashboard/{{ userlist[i].id }}/delete">Delete</a></td>
+                {% endif %}      
+            </tr>
+            {% endfor %} 
+            <tr>
+                <td>
+                    <a href="dashboard/add/user">Add User</a>
+                </td>
+            </tr>
+          </table>
+          <script>
+            function search() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("tables");
+              tr = table.getElementsByTagName("tr");
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }       
+              }
+            }
+            </script>
+        
+    <table>
+      <tr>
+             <th colspan="9" >
+                 <small style="text-align: right;">Products: {{ numberstore-1 }}</small> 
+             </th>
+      </tr>
+      <tr>  
+                 <th>No</th>
+                 <th>Seller</th>
+                 <th>Product</th>
+                 <th>Brands</th>
+                 <th>Category</th>
+                 <th>Price</th>
+                 <th>Sold</th>
+                 <th>Stock</th>
+                 <th>Options</th>
+      </tr>
+      {% for x in numberst %}
+      <tr>      
+                 <td>{{ x+1 }}</td>
+                 <td>{{ strorelist[x].username }}</td>
+                 <td>{{ strorelist[x].product }}</td>
+                 <td>{{ strorelist[x].brand }}</td>
+                 <td>{{ strorelist[x].category }}</td>
+                 <td>{{ strorelist[x].price }}</td>
+                 <td>{{ strorelist[x].sold }}</td>
+                 <td>{{ strorelist[x].stock }}</td>
+                 <td>300</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <table>
+       <tr>
+             <th colspan="9" >
+                 <small style="text-align: right;">Products: {{ numbercostumer-1 }}</small> 
+             </th>
+      </tr>
+      <tr>  
+                 <th>No</th>
+                 <th>Costumer</th>
+                 <th>Seller</th>
+                 <th>Product</th>
+                 <th>Price</th>
+                 <th>Total</th>
+                 <th>Payment</th>
+                 <th>Options</th>
+      </tr>
+      {% for x in numbercost %}
+      <tr>
+                 <td>{{x+1}}</td>
+                 <td>{{ getcostumer[x].username }}</td>
+                 <td>{{ getcostumer[x].seller }}</td>
+                 <td>{{ getcostumer[x].product }}</td>
+                 <td>{{ getcostumer[x].price }}</td>
+                 <td>{{ getcostumer[x].total }}</td>
+                 <td>{{ getcostumer[x].payment }}</td>
+                 <td>300</td>
+      </tr>
+      {% endfor %}
+    </table>
+     {% else %}
+         
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>{{ username }}</td>
+            <td>{{ email }}</td>
+            <td><a href="dashboard/{{ id }}/update">Edit</a>&nbsp;<a href="dashboard/{{ id }}/delete">Delete</a></td>
+        </tr>
+     </table>     
+     {% endif %}
+  </div>
+</div>
+    <script src="{{ url_for('static', filename='bootstrap/js/jquery.min.js') }}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{ url_for('static', filename='bootstrap/js/popper.min.js') }}"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
+    <script src="{{ url_for('static', filename='bootstrap/js/scripts.js') }}"></script> <!-- Custom scripts -->
+    <div class="footer">
+
+	<div class="footer-bottom">
+		<div class="container">
+
+				<div class="col-sm-3 footer-bottom-cate cate-bottom">
+					<h6>Our Address</h6>
+					<ul>
+						<li>Aliquam metus  dui. </li>
+						<li>orci, ornareidquet</li>
+						<li> ut,DUI.</li>
+						<li>nisi, dignissim</li>
+						<li>gravida at.</li>
+						<li class="phone">PH : 6985792466</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+				<p class="footer-class"> © {{date.year}} Fashion Mania. All Rights Reserved | Design by <a href="https://github.com/LcfherShell" target="_blank">LcfherShell</a> </p>
+			</div>
+	</div>
+</div>
+
+</body>
+</html>

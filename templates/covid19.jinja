@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Covid19</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      font-size: 18px;
+    }
+    
+    table th, table td {
+      text-align: left;
+      padding: 12px;
+    }
+    
+    table tr {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    table tr.header, table tr:hover {
+      background-color: #f1f1f1;
+    }
+    </style>
+</head>
+<body>
+  
+	<table>
+  <tr>
+  	<th colspan="6">covid data in world</th>
+  </tr>
+  <tr>
+    <th>New Confirmed</th>
+    <th>Total Confirmed</th>
+    <th>New Deaths</th>
+    <th>Total Deaths</th>
+    <th>New Recovered</th>
+    <th>Total Recovered</th>
+  </tr>
+  {% for data in wcovid %}
+  <tr>
+    <td>{{ ConvertMany(data.newconfirm, '.') }}</td>
+    <td>{{ ConvertMany(data.totalconfirm, '.') }}</td>
+    <td>{{ ConvertMany(data.newdeaths, '.') }}</td>
+    <td>{{ ConvertMany(data.totaldeaths, '.') }}</td>
+    <td>{{ ConvertMany(data.newrecover, '.') }}</td>
+    <td>{{ ConvertMany(data.totalrecover, '.') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+
+<input type="text" id="myInput" onkeyup="search()" placeholder="Search for Country" title="Type in a name">
+<table id="covid19">
+  <tr>
+  	<th colspan="8" >covid data in various countries</th>
+  </tr>
+  <tr>
+  	<th>Country</th>
+  	<th>Country Code</th>
+    <th>New Confirmed</th>
+    <th>Total Confirmed</th>
+    <th>New Deaths</th>
+    <th>Total Deaths</th>
+    <th>New Recovered</th>
+    <th>Total Recovered</th>
+  </tr>
+  {% for data in countries %}
+  <tr>
+    <td>{{ data.Country }}</td>
+    <td>{{ data.CountryCode }}</td>
+    <td>{{  ConvertMany(data.NewConfirmed, '.') }}</td>
+    <td>{{  ConvertMany(data.TotalConfirmed, '.') }}</td>
+    <td>{{  ConvertMany(data.NewDeaths, '.') }}</td>
+    <td>{{  ConvertMany(data.TotalDeaths, '.') }}</td>
+    <td>{{  ConvertMany(data.NewRecovered, '.') }}</td>
+    <td>{{  ConvertMany(data.TotalRecovered, '.') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<script>
+  function search() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("covid19");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+  </script>
+  
+</body>
+</html>

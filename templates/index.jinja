@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Laris Shopp | Home </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!-- sssss --->
+<link href="{{ url_for('static', filename='bootstrap5/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ url_for('static', filename='bootstrap5/js/jquery.min.js') }}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{{ url_for('static', filename='bootstrap5/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="{{ url_for('static', filename='bootstrap5/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap5/js/memenu.js') }}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="{{ url_for('static', filename='bootstrap5/js/simpleCart.min.js') }}"> </script>
+<!-- slide -->
+<script src="{{ url_for('static', filename='bootstrap5/js/responsiveslides.min.js') }}"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+<style>
+.banner-responsive{
+    width: 400px;
+    height: 93px;
+}
+</style>
+</head>
+<body>
+<!--header-->
+<div class="header">
+	<div class="header-top">
+		<div class="container">
+		<div class="col-sm-4 world">
+					<ul >
+						<li>
+						<select class="in-drop">
+							  <option>English</option>
+							  <option>Japanese</option>
+							  <option>French</option>
+							</select></li>
+						<li><select class="in-drop1">
+							  <option>Dollar</option>
+							  <option>Euro</option>
+							  <option>Yen</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-4 logo">
+					<a href="/"><img src="{{ url_for('static', filename='bootstrap/images/icons/logos.png') }}" alt=""></a>	
+				</div>
+		
+			<div class="col-sm-4 header-left">		
+					
+                    {% if user == no %}
+                        <p class="log"><a href="{{ url_for('login') }}"  >Login</a>
+						<span>or</span><a  href="{{ url_for('registration') }}"  >Signup</a></p>
+                    {% else %}
+                       <p class="log"><a  href="{{ url_for('dashboard') }}"  >{{user}}</a></p>
+                    {% endif %}
+					<div class="cart box_1">
+						<a href="checkout.html">
+						<h3> <div class="total">
+							<span class="simpleCart_total"></span></div>
+							<img src="{{ url_for('static', filename='bootstrap/images/icons/cart.png') }}" alt=""/></h3>
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+		</div>
+		<div class="container">
+			<div class="head-top">
+				<div class="col-sm-2 number">
+					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
+				</div>
+		 <div class="col-sm-8 h_menu4">
+				<ul class="memenu skyblue">
+					  <li class=" grid">
+					  	<a  href="{{ url_for('index') }}">Home</a>
+					  </li>	
+				    <li class="grid">
+                        <a  href="#">Category</a>
+					  	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">
+									<h4>All Category</h4>
+									<ul>
+										<li><a href="{{ url_for('store', categorys='clothing') }}">Clothing</a></li>
+										<li><a href="{{ url_for('store', categorys='vehicles') }}">Vehicles</a></li>
+										<li><a href="{{ url_for('store', categorys='drinks and food') }}">Drinks & Food</a></li>
+										<li><a href="{{ url_for('store', categorys='daily needs') }}">Daily Needs</a></li>
+										<li><a href="{{ url_for('store', categorys='fashion') }}">Fashion</a></li>
+										<li><a href="{{ url_for('store', categorys='electronic') }}">Electronic</a></li>
+										<li><a href="{{ url_for('store', categorys='tools') }}">Tools</a></li>
+										<li><a href="{{ url_for('store', categorys='healthy') }}">Healthy</a></li>
+										<li><a href="{{ url_for('store', categorys='kitchen') }}">Kitchen</a></li>
+										<li><a href="{{ url_for('store', categorys='others') }}">Others</a></li>
+										
+									</ul>	
+								</div>							
+							</div>
+						  </div>
+						</div>
+			    </li>
+				<li><a  href="typo.html">Blog</a></li>				
+				<li><a class="color6" href="{{ url_for('contact') }}">Contact</a></li>
+			  </ul> 
+			</div>
+            <div class="col-sm-2 search">
+            <input type="text" id="myInput" onkeyup="search()" placeholder="Search" title="Type in a name">
+		</div>
+
+        <div class="clearfix"> </div>
+			<!---pop-up-box---->
+					  <script type="text/javascript" src="{{ url_for('static', filename='bootstrap5/js/modernizr.custom.min.js') }}"></script>    
+					<link href="{{ url_for('static', filename='bootstrap5/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all"/>
+					<script src="{{ url_for('static', filename='bootstrap5/js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
+					<!---//pop-up-box---->
+				<div id="small-dialog" class="mfp-hide">>
+				 <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>			
+	<!---->		
+		</div>
+	</div>
+</div>
+<!--banner-->
+<div class="banner">
+	<div class="col-sm-3 banner-mat">
+		<img class="img-responsive"	src="{{ url_for('static', filename='banner/data1.jpg') }}" alt="">
+	</div>
+	<div class="col-sm-6 matter-banner">
+	 	<div class="slider">
+	    	<div class="callbacks_container">
+	      		<ul class="rslides" id="slider">
+	        		<li>
+	          			<img class="banner-responsive" src="{{ url_for('static', filename='banner/data2.jpg') }}" alt="">
+	       			 </li>
+			 		 <li>
+	          			<img class="banner-responsive" src="{{ url_for('static', filename='banner/data3.jpg') }}" alt="">   
+	       			 </li>
+					 <li>
+	          			<img class="banner-responsive" src="{{ url_for('static', filename='banner/data1.jpg') }}" alt="">
+	        		</li>	
+	      		</ul>
+	 	 	</div>
+		</div>
+	</div>
+	<div class="col-sm-3 banner-mat">
+		<img class="img-responsive"  src="{{ url_for('static', filename='banner/data2.jpg') }}" alt="">
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<!--//banner-->
+<!--content-->
+<div class="content">
+	<div class="container">
+		<div class="content-top">
+			<h1>Recent Products</h1>
+			<div class="content-top1">
+		{% for store in records.items %}
+        	<div class="col-md-3 col-md2">
+					<div class="col-md1 simpleCart_shelfItem">
+						<a href="{{ url_for('viewsProduct', id=store.id) }}">
+                         {% if os.path.isfile(os.path.join(app.config['UPLOAD_FOLDER']+'/image', store.picture)) %}
+							<img class="img-responsive" src="{{ url_for('static', filename='download/image/'+store.picture) }}" alt="" />
+                         {% else %}
+                            <img class="img-responsive" src="{{ url_for('static', filename='download/image/notdata.png') }}" alt="" />
+                         {% endif %}
+						</a>
+						<h3><a href="{{ url_for('viewsProduct', id=store.id) }}">{{ store.product }}</a></h3>
+						 <div class="price">
+								<h5 class="item_price">{{ ConvertMany(store.price, '.') }}</h5>
+								<a class="item_add" href="{{ url_for('buyProduct', id=store.id) }}">Add To Cart</a>
+								<div class="clearfix"> </div>
+						 </div>
+						
+					</div>
+			</div>
+        {% endfor %}
+
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!--//content-->
+<!--footer-->
+<div class="footer">
+
+	<div class="footer-bottom">
+		<div class="container">
+                <div class="col-md-3 footer-bottom-cate">
+					<h6>Soc</h6>
+					<ul>
+										<li><a href="https://www.facebook.com/profile.php?id=100038286887674">Facebook</a></li>
+									    <li><a href="https://github.com/LcfherShell" target="_blank">Github</a></li>
+									    <li><a href="https://www.youtube.com/channel/UCwjmSYoVHpY-SwEp4OIbABg?sub_confirmation=1 ">Youtube</a></li>
+						
+					</ul>
+				</div>
+				<div class="col-sm-3 footer-bottom-cate cate-bottom">
+					<h6>Our Address</h6>
+					<ul>
+						<li>Aliquam metus  dui. </li>
+						<li>orci, ornareidquet</li>
+						<li> ut,DUI.</li>
+						<li>nisi, dignissim</li>
+						<li>gravida at.</li>
+						<li class="phone">PH : 6985792466</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+				<p class="footer-class"> © {{date.year}} Fashion Mania. All Rights Reserved | Design by <a href="https://github.com/LcfherShell" target="_blank">LcfherShell</a> </p>
+			</div>
+	</div>
+</div>
+
+</body>
+</html>

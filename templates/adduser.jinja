@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block pages %}{% endblock %}{{ pages }}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='bootstrap/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/bootstrap/css/brands.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/bootstrap/css/solid.css') }}" rel="stylesheet"> 
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='bootstrap/images/icons/lcfshell.png') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/vendor/bootstrap/css/bootstrap.min.css') }}">
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+<!--===============================================================================================-->
+
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/vendor/animate/animate.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/css/main.css') }}">
+<!--===============================================================================================-->
+<style>
+    * {
+  user-select: none;
+}
+*::selection {
+  background: none;
+}
+*::-moz-selection {
+  background: none;
+}
+img{
+	width: 100px;
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-30 p-r-30 p-t-13 p-b-13">
+				{% for message in get_flashed_messages() %}
+				  <script type="text/javascript">
+				    alert("{{ message }}");
+				  </script>
+				{% endfor %}
+				<form action="" method="post" class="login100-form validate-form">
+                    {{ form.csrf_token() }}
+					<span class="login100-form-title p-b-10">
+						<img src="{{ url_for('static', filename='bootstrap/images/icons/lcfshell2.png') }}">
+						<p>{{ pages }}</p>
+					</span>
+
+                    <div class="wrap-input100 validate-input m-b-12">
+						{{form.name_first(class="input100", id="name_first", placeholder="First Name", autocomplete="off")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-user"></span>
+                        </span>
+					</div>
+					{% for error in form.name_first.errors %}
+					<p><small>{{ error }}</small></p>
+					{% endfor %}
+                    <div class="wrap-input100 validate-input m-b-12">
+						{{form.name_last(class="input100", id="name_last", placeholder="Last Name", autocomplete="off")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-user"></span>
+                        </span>
+                    </div>
+					{% for error in form.name_last.errors %}
+					<p><small>{{ error }}</small></p>
+					{% endfor %}
+					<div class="wrap-input100 m-b-12">
+						{{form.email(class="input100", id="email", placeholder="Email", type="email", autocomplete="off")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-envelope"></span>
+                        </span>
+					</div>
+					{% for error in form.email.errors %}
+					<p><small>{{ error }}</small></p>
+					{% endfor %}
+
+                    <div class="wrap-input100 validate-input m-b-12">
+						{{form.password(class="input100", id="password", placeholder="Password",  ondblclick="ShowEvent()", autocomplete="off")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+                        </span>
+					</div>
+					{% for error in form.password.errors %}
+					<p><small>{{ error }}</small></p>
+					{% endfor %}
+                    <div class="wrap-input100 validate-input m-b-12">
+						{{form.confirm(class="input100", id="confirm", placeholder="Confirm Password",  ondblclick="ShowEvent()", autocomplete="off")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+                        </span>
+					</div>
+					{% for error in form.confirm.errors %}
+					<p><small>{{ error }}</small></p>
+					{% endfor %}						
+                    <script>
+                        function ShowEvent() {
+                            var temp1 = document.getElementById("password"); 
+                            if (temp1.type === "password") { 
+                                     temp1.type = "text"; 
+                                } 
+                            else { 
+                                     temp1.type = "password"; 
+                                } 
+							var temp2 = document.getElementById("confirm"); 
+                            if (temp2.type === "password") { 
+                                     temp2.type = "text"; 
+                                } 
+                            else { 
+                                     temp2.type = "password"; 
+                                } 
+                        }
+
+                        //disable inspect element and copy-paste
+                        document.onkeydown = function(e) {
+  if(event.keyCode == 123) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+     return false;
+  }
+}
+                        </script>
+					<div class="container-login100-form-btn">
+                        {{form.recaptcha()}}
+                        {% for error in form.recaptcha.errors %}
+                        <p><small>{{ error }}</small></p>
+                        {% endfor %}
+					</div>
+					
+					<div class="container-login100-form-btn p-t-20">
+                        {{form.submit(class="login100-form-btn")}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->	
+	<script src="{{ url_for('static', filename='bootstrap/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='bootstrap/vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='bootstrap/javascript/main.js') }}"></script>
+</body>
+</html>
