@@ -44,7 +44,7 @@ app.config.update(dict(
     MAIL_USE_TLS = False,
     MAIL_USE_SSL = True,
     MAIL_USERNAME = "<your_Email>",
-    MAIL_PASSWORD = "<Your_Password_Email>'",
+    MAIL_PASSWORD = "<Your_Password_Email>",
     UPLOAD_FOLDER = UPLOAD_FOLDER,
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024,
 ))
