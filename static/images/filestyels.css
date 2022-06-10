@@ -1,0 +1,62 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body, html {
+    height: 100%;
+}
+header {
+ background-color: #045de9;
+ background-image: linear-gradient(to top, #fff 0%, #045de9 74%);
+}
+#pkp_structure_footer{
+	font-size: 12px;
+	background-color: #045de9;
+	background-image: linear-gradient(to top, #fff 0%, #045de9 74%);
+}
+
+header a{
+	font-size: 12px;
+}
+header a:link {
+  text-decoration: none;
+}
+
+header a:visited {
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+header a:active {
+  text-decoration: underline;
+}
+
+.pkp_site_name .is_img img {
+  width : auto ;
+  height : auto;
+  max-height : 165px;
+  max-width: auto;
+  background-position: center;
+  background-size: cover;
+  border-style: none;
+  box-shadow: 0 0 4px 4px white inset;
+}
+.pkp_structure_page {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.pkp_site_name_wrapper, .pkp_navigation_primary_row {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.pkp_site_name {
+	padding-top: 5px;
+	padding-bottom: 2px;
+}
+.pkp_structure_footer{
+	background-image: linear-gradient(to bottom left,  #DCDCDC, #D1D0CE	);
+}
