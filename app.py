@@ -10,7 +10,7 @@ from datetime import timedelta
 app = Flask(__name__)
 
 app.config.update(dict( 
-     SECRET_KEY = os.urandom(58),
+    SECRET_KEY = os.urandom(58),
     SECURITY_PASSWORD_SALT = os.urandom(128),
     PERMANENT_SESSION_LIFETIME = timedelta(days=2)
     ))
